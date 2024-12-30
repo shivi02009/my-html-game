@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scramble Word Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #game-container {
+            margin: 20px auto;
+        }
+        #scrambled-word {
+            font-size: 30px;
+            font-weight: bold;
+            color: #333;
+        }
+        #hint {
+            font-size: 20px;
+            color: #555;
+            margin: 10px 0;
+        }
+        #answer-input {
+            padding: 10px;
+            font-size: 18px;
+        }
+        #submit-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        #win-container {
+            display: none;
+        }
+        #click-me {
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Scramble Word Game</h1>
+    <div id="game-container">
+        <div id="hint">Hint: He's your daddy.</div>
+        <div id="scrambled-word">SHIVAHNS</div> <!-- Scrambled version of SHIVANSH -->
+        <input type="text" id="answer-input" placeholder="Unscramble the word">
+        <button id="submit-button">Submit</button>
+    </div>
+    <div id="win-container">
+        <h2>Congratulations! You solved it!</h2>
+        <button id="click-me">Click Me</button>
+    </div>
+    <script>
+        const correctAnswer = "shivansh"; // Correct unscrambled word
+        const redirectLink = "https://docs.google.com/document/d/1IekLfdKdC0oNZ8ko232KbLNMp9SxDFXv8J6TSLW7kWo/edit?usp=sharing"; // Replace this with the link you want
+
+        const submitButton = document.getElementById('submit-button');
+        const answerInput = document.getElementById('answer-input');
+        const winContainer = document.getElementById('win-container');
+        const clickMeButton = document.getElementById('click-me');
+
+        submitButton.addEventListener('click', function() {
+            const userAnswer = answerInput.value.trim().toLowerCase(); // Normalize input for case-insensitivity
+
+            if (userAnswer === correctAnswer) {
+                winContainer.style.display = 'block'; // Show the winning message and button
+                document.getElementById('game-container').style.display = 'none'; // Hide the game
+            } else {
+                alert("Incorrect! Try again.");
+            }
+        });
+
+        clickMeButton.addEventListener('click', function() {
+            window.location.href = redirectLink; // Redirect to the link
+        });
+    </script>
+</body>
+</html>
